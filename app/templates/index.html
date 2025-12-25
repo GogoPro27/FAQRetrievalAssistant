@@ -23,10 +23,12 @@
 
 {% if results %}
 <h2>Top Results</h2>
-<p>
-    <strong>Confidence:</strong>
-    {{ confidence }}
-</p>
+{% if below_threshold %}
+<p><em>I’m not fully confident, but these might help:</em></p>
+{% else %}
+<p><strong>Confidence:</strong> {{ confidence }}</p>
+{% endif %}
+
 <ul>
     {% for r in results %}
     <li>

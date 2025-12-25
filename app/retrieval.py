@@ -24,6 +24,8 @@ FAQ_EMBEDDINGS = FAQ_EMBEDDINGS / np.linalg.norm(
     FAQ_EMBEDDINGS, axis=1, keepdims=True
 )
 
+CONFIDENCE_THRESHOLD = 0.55
+
 
 def compute_confidence(similarities: np.ndarray) -> float:
     if len(similarities) < 2:
@@ -69,7 +71,10 @@ def search(query: str, top_k: int = 3):
     top_similarities = similarities[sorted_indices][:2]
     confidence = compute_confidence(top_similarities)
 
+    is_below_threshold = confidence < CONFIDENCE_THRESHOLD
+
     return {
         "results": results,
-        "confidence": confidence
+        "confidence": confidence,
+        "below_threshold": is_below_threshold
     }
