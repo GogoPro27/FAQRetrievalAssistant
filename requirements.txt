@@ -2,3 +2,4 @@ numpy
 openai
 python-dotenv
 flask
+pandas

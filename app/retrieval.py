@@ -7,7 +7,9 @@ from app.embeddings import create_embedding
 
 load_dotenv()
 
-DATA_DIR = "data"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+
 FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
 EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
 
@@ -42,6 +44,19 @@ def cosine_similarity(query_embedding: np.ndarray) -> np.ndarray:
     return FAQ_EMBEDDINGS @ query_embedding
 
 
+def format_search_results(indices: np.ndarray, similarities: np.ndarray) -> list[dict]:
+    results = []
+    for idx in indices:
+        faq = FAQS[idx]
+        results.append({
+            "id": faq["id"],
+            "question": faq["question"],
+            "answer": faq["answer"],
+            "similarity": float(similarities[idx])
+        })
+    return results
+
+
 def search(query: str, top_k: int = 3):
     query_embedding = create_embedding(query)
     similarities = cosine_similarity(query_embedding)
@@ -49,14 +64,7 @@ def search(query: str, top_k: int = 3):
     sorted_indices = np.argsort(similarities)[::-1]
     top_indices = sorted_indices[:top_k]
 
-    results = []
-    for idx in top_indices:
-        faq = FAQS[idx]
-        results.append({
-            "question": faq["question"],
-            "answer": faq["answer"],
-            "similarity": float(similarities[idx])
-        })
+    results = format_search_results(top_indices, similarities)
 
     top_similarities = similarities[sorted_indices][:2]
     confidence = compute_confidence(top_similarities)

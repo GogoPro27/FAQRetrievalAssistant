@@ -1,0 +1,45 @@
+{
+  "run_metadata": {
+    "run_name": "baseline",
+    "timestamp_utc": "2025-12-25T21:27:11.249760",
+    "embedding_model": "text-embedding-3-small",
+    "top_k": 3,
+    "confidence_formula": "0.7*similarity + 0.3*margin",
+    "notes": "Baseline evaluation before multilingual FAQ augmentation"
+  },
+  "num_queries": 32,
+  "top1_accuracy": 0.84375,
+  "top3_accuracy": 0.9375,
+  "accuracy_by_language": {
+    "top1_correct": {
+      "en": 0.95,
+      "mk": 0.6666666666666666
+    },
+    "top3_correct": {
+      "en": 1.0,
+      "mk": 0.8333333333333334
+    }
+  },
+  "confidence_stats": {
+    "correct": {
+      "count": 27.0,
+      "mean": 0.5346296296296297,
+      "std": 0.22070030987886444,
+      "min": 0.08,
+      "25%": 0.381,
+      "50%": 0.648,
+      "75%": 0.688,
+      "max": 0.807
+    },
+    "incorrect": {
+      "count": 5.0,
+      "mean": 0.0992,
+      "std": 0.06338532953294476,
+      "min": 0.032,
+      "25%": 0.042,
+      "50%": 0.097,
+      "75%": 0.151,
+      "max": 0.174
+    }
+  }
+}

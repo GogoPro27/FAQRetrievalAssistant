@@ -1,10 +1,13 @@
 import json
 import numpy as np
+import os
 from app.embeddings import create_embedding
 
-FAQS_PATH = "data/faqs.json"
-EMBEDDINGS_PATH = "data/embeddings.npy"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
+FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
+EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
 
 def main():
     with open(FAQS_PATH, "r", encoding="utf-8") as f:

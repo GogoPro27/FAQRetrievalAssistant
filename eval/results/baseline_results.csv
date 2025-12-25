@@ -1,0 +1,33 @@
+query,language,expected_faq_id,retrieved_ids,rank_of_expected,top1_correct,top3_correct,confidence
+"I can't log into my account, how do I reset my password?",en,1,"[1, 2, 13]",1.0,True,True,0.681
+Forgot my password and now I'm locked out,en,2,"[2, 1, 3]",1.0,True,True,0.648
+The password reset email never arrives,en,3,"[3, 1, 2]",1.0,True,True,0.59
+How can I update the email linked to my account?,en,4,"[4, 5, 16]",1.0,True,True,0.485
+Where can I change my credit card details?,en,5,"[4, 5, 16]",2.0,False,True,0.151
+My card was charged twice this month,en,6,"[6, 5, 15]",1.0,True,True,0.752
+I want to stop my subscription,en,7,"[7, 16, 13]",1.0,True,True,0.708
+"If I cancel my plan, will I get my money back?",en,8,"[8, 7, 16]",1.0,True,True,0.659
+How do I download previous invoices?,en,9,"[9, 5, 16]",1.0,True,True,0.807
+Which credit cards can I use to pay?,en,10,"[10, 6, 5]",1.0,True,True,0.413
+How can I reach support?,en,11,"[11, 12, 4]",1.0,True,True,0.648
+When is customer support available?,en,12,"[12, 11, 5]",1.0,True,True,0.704
+I want to permanently delete my account,en,13,"[13, 14, 7]",1.0,True,True,0.632
+Can I recover my account after deleting it?,en,14,"[14, 13, 15]",1.0,True,True,0.693
+My account was disabled and I don't know why,en,15,"[15, 14, 2]",1.0,True,True,0.546
+How do I move to a higher subscription plan?,en,16,"[16, 7, 5]",1.0,True,True,0.767
+Is my personal information safe on your platform?,en,17,"[17, 15, 10]",1.0,True,True,0.676
+Does the app support more than one language?,en,18,"[18, 10, 12]",1.0,True,True,0.679
+"I found a bug in the app, how can I report it?",en,19,"[19, 11, 5]",1.0,True,True,0.683
+Why does the application take so long to load?,en,20,"[20, 15, 6]",1.0,True,True,0.714
+"Не можам да се најавам, ја заборавив лозинката",mk,1,"[2, 4, 7]",,False,False,0.097
+Не ми стигнува мејл за ресетирање на лозинка,mk,3,"[3, 1, 9]",1.0,True,True,0.08
+Како да ја сменам емаил адресата на профилот?,mk,4,"[4, 5, 13]",1.0,True,True,0.492
+Каде можам да ги ажурирам податоците за плаќање?,mk,5,"[9, 5, 10]",2.0,False,True,0.174
+Ми беше наплатено двапати со иста картичка,mk,6,"[6, 10, 5]",1.0,True,True,0.26
+Сакам да ја откажам претплатата,mk,7,"[10, 5, 8]",,False,False,0.042
+Ќе добијам ли поврат ако ја откажам претплатата?,mk,8,"[8, 10, 9]",1.0,True,True,0.096
+Како да ги симнам фактурите?,mk,9,"[19, 9, 11]",2.0,False,True,0.032
+Како да стапам во контакт со поддршка?,mk,11,"[11, 12, 16]",1.0,True,True,0.262
+Во кое време работи корисничката поддршка?,mk,12,"[12, 11, 10]",1.0,True,True,0.349
+Сакам трајно да го избришам мојот профил,mk,13,"[13, 14, 2]",1.0,True,True,0.111
+Апликацијата ми работи многу бавно,mk,20,"[20, 17, 19]",1.0,True,True,0.3
