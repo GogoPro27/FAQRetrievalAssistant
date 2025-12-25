@@ -23,6 +23,10 @@
 
 {% if results %}
 <h2>Top Results</h2>
+<p>
+    <strong>Confidence:</strong>
+    {{ confidence }}
+</p>
 <ul>
     {% for r in results %}
     <li>

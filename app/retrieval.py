@@ -23,6 +23,21 @@ FAQ_EMBEDDINGS = FAQ_EMBEDDINGS / np.linalg.norm(
 )
 
 
+def compute_confidence(similarities: np.ndarray) -> float:
+    if len(similarities) < 2:
+        return 0.0
+
+    s1 = float(similarities[0])
+    s2 = float(similarities[1])
+    margin = s1 - s2
+
+    similarity_component = max(0.0, min(1.0, (s1 - 0.5) / 0.5))
+    margin_component = max(0.0, min(1.0, margin / 0.15))
+    confidence = 0.7 * similarity_component + 0.3 * margin_component
+
+    return round(confidence, 3)
+
+
 def cosine_similarity(query_embedding: np.ndarray) -> np.ndarray:
     return FAQ_EMBEDDINGS @ query_embedding
 
@@ -31,7 +46,8 @@ def search(query: str, top_k: int = 3):
     query_embedding = create_embedding(query)
     similarities = cosine_similarity(query_embedding)
 
-    top_indices = np.argsort(similarities)[::-1][:top_k]
+    sorted_indices = np.argsort(similarities)[::-1]
+    top_indices = sorted_indices[:top_k]
 
     results = []
     for idx in top_indices:
@@ -42,4 +58,10 @@ def search(query: str, top_k: int = 3):
             "similarity": float(similarities[idx])
         })
 
-    return results
+    top_similarities = similarities[sorted_indices][:2]
+    confidence = compute_confidence(top_similarities)
+
+    return {
+        "results": results,
+        "confidence": confidence
+    }

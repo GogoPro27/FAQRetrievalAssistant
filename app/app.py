@@ -4,20 +4,29 @@ from app.retrieval import search
 app = Flask(__name__)
 
 
+def process_search_query(query_text):
+    if not query_text:
+        return [], 0.0
+
+    response = search(query_text)
+    return response["results"], response["confidence"]
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
-    results = []
     query = ""
+    results = []
+    confidence = 0.0
 
     if request.method == "POST":
         query = request.form.get("query", "").strip()
-        if query:
-            results = search(query)
+        results, confidence = process_search_query(query)
 
     return render_template(
         "index.html",
         query=query,
-        results=results
+        results=results,
+        confidence=confidence
     )
 
 
