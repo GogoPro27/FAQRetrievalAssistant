@@ -1,30 +1,42 @@
 import json
 import os
 import numpy as np
-from openai import OpenAI
-from dotenv import load_dotenv
 from app.embeddings import create_embedding
-
-load_dotenv()
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
+ANSWERS_PATH = os.path.join(DATA_DIR, "answers.json")
 EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+CONFIDENCE_THRESHOLD = 0.55
 
-with open(FAQS_PATH, "r", encoding="utf-8") as file:
-    FAQS = json.load(file)
+with open(FAQS_PATH, "r", encoding="utf-8") as f:
+    QUESTIONS = json.load(f)
+
+with open(ANSWERS_PATH, "r", encoding="utf-8") as f:
+    ANSWERS = {a["answer_id"]: a["answer_text"] for a in json.load(f)}
 
 FAQ_EMBEDDINGS = np.load(EMBEDDINGS_PATH)
-
 FAQ_EMBEDDINGS = FAQ_EMBEDDINGS / np.linalg.norm(
     FAQ_EMBEDDINGS, axis=1, keepdims=True
 )
 
-CONFIDENCE_THRESHOLD = 0.55
+
+def build_answer_to_en_question_map(questions):
+    mapping = {}
+    for q in questions:
+        if q["language"] == "en":
+            mapping[q["answer_id"]] = q["question"]
+    return mapping
+
+
+ANSWER_TO_EN_QUESTION = build_answer_to_en_question_map(QUESTIONS)
+
+
+def cosine_similarity(query_embedding: np.ndarray) -> np.ndarray:
+    return FAQ_EMBEDDINGS @ query_embedding
 
 
 def compute_confidence(similarities: np.ndarray) -> float:
@@ -42,39 +54,56 @@ def compute_confidence(similarities: np.ndarray) -> float:
     return round(confidence, 3)
 
 
-def cosine_similarity(query_embedding: np.ndarray) -> np.ndarray:
-    return FAQ_EMBEDDINGS @ query_embedding
+def rank_questions(query: str):
+    query_embedding = create_embedding(query)
+    similarities = cosine_similarity(query_embedding)
+    sorted_indices = np.argsort(similarities)[::-1]
+
+    return sorted_indices, similarities
 
 
-def format_search_results(indices: np.ndarray, similarities: np.ndarray) -> list[dict]:
+def collect_unique_answers(sorted_indices, similarities, top_k: int):
     results = []
-    for idx in indices:
-        faq = FAQS[idx]
+    seen_answers = set()
+    collected_similarities = []
+
+    for idx in sorted_indices:
+        q = QUESTIONS[idx]
+        answer_id = q["answer_id"]
+
+        if answer_id in seen_answers:
+            continue
+
+        seen_answers.add(answer_id)
+        collected_similarities.append(similarities[idx])
+
         results.append({
-            "id": faq["id"],
-            "question": faq["question"],
-            "answer": faq["answer"],
-            "similarity": float(similarities[idx])
+            "id": answer_id,
+            "question": ANSWER_TO_EN_QUESTION[answer_id],
+            "answer": ANSWERS[answer_id],
+            "similarity": float(similarities[idx]),
         })
-    return results
+
+        if len(results) == top_k:
+            break
+
+    return results, np.array(collected_similarities)
 
 
 def search(query: str, top_k: int = 3):
-    query_embedding = create_embedding(query)
-    similarities = cosine_similarity(query_embedding)
+    sorted_indices, similarities = rank_questions(query)
 
-    sorted_indices = np.argsort(similarities)[::-1]
-    top_indices = sorted_indices[:top_k]
+    results, collected_similarities = collect_unique_answers(
+        sorted_indices,
+        similarities,
+        top_k
+    )
 
-    results = format_search_results(top_indices, similarities)
-
-    top_similarities = similarities[sorted_indices][:2]
-    confidence = compute_confidence(top_similarities)
-
-    is_below_threshold = confidence < CONFIDENCE_THRESHOLD
+    confidence = compute_confidence(collected_similarities)
+    below_threshold = confidence < CONFIDENCE_THRESHOLD
 
     return {
         "results": results,
         "confidence": confidence,
-        "below_threshold": is_below_threshold
+        "below_threshold": below_threshold
     }

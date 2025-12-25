@@ -1,102 +1,242 @@
 [
   {
-    "id": 1,
-    "question": "How do I reset my password?",
-    "answer": "You can reset your password by clicking the Forgot password link on the login page and following the instructions sent to your email."
+    "question_id": "reset_password_q_en",
+    "answer_id": "reset_password",
+    "language": "en",
+    "question": "How do I reset my password?"
   },
   {
-    "id": 2,
-    "question": "I forgot my password and cannot log in",
-    "answer": "If you forgot your password, use the Forgot password option on the login page to receive a reset link via email."
+    "question_id": "reset_password_q_mk",
+    "answer_id": "reset_password",
+    "language": "mk",
+    "question": "Како да ја ресетирам лозинката?"
   },
   {
-    "id": 3,
-    "question": "Why am I not receiving the password reset email?",
-    "answer": "Please check your spam folder and ensure your email address is correct. If the issue persists, contact customer support."
+    "question_id": "forgot_password_login_q_en",
+    "answer_id": "forgot_password_login",
+    "language": "en",
+    "question": "I forgot my password and cannot log in"
   },
   {
-    "id": 4,
-    "question": "How can I change my email address?",
-    "answer": "You can change your email address in your account settings under the Profile section."
+    "question_id": "forgot_password_login_q_mk",
+    "answer_id": "forgot_password_login",
+    "language": "mk",
+    "question": "Ја заборавив лозинката и не можам да се најавам"
   },
   {
-    "id": 5,
-    "question": "How do I update my billing information?",
-    "answer": "To update billing details, go to Account Settings and select the Billing tab to edit your payment information."
+    "question_id": "password_reset_email_missing_q_en",
+    "answer_id": "password_reset_email_missing",
+    "language": "en",
+    "question": "Why am I not receiving the password reset email?"
   },
   {
-    "id": 6,
-    "question": "Why was my credit card charged twice?",
-    "answer": "Double charges usually occur due to authorization holds. If the issue remains after 24 hours, please contact support."
+    "question_id": "password_reset_email_missing_q_mk",
+    "answer_id": "password_reset_email_missing",
+    "language": "mk",
+    "question": "Зошто не ми стигнува мејлот за ресетирање на лозинката?"
   },
   {
-    "id": 7,
-    "question": "How do I cancel my subscription?",
-    "answer": "You can cancel your subscription anytime from the Subscription section in your account settings."
+    "question_id": "change_email_q_en",
+    "answer_id": "change_email",
+    "language": "en",
+    "question": "How can I change my email address?"
   },
   {
-    "id": 8,
-    "question": "Will I get a refund if I cancel my subscription?",
-    "answer": "Refunds depend on your subscription plan. Please review our refund policy or contact support for details."
+    "question_id": "change_email_q_mk",
+    "answer_id": "change_email",
+    "language": "mk",
+    "question": "Како да ја сменам емаил адресата?"
   },
   {
-    "id": 9,
-    "question": "How can I download my invoices?",
-    "answer": "Invoices are available in PDF format under the Billing section of your account."
+    "question_id": "update_billing_q_en",
+    "answer_id": "update_billing",
+    "language": "en",
+    "question": "How do I update my billing information?"
   },
   {
-    "id": 10,
-    "question": "What payment methods do you accept?",
-    "answer": "We accept major credit cards including Visa, MasterCard, and American Express."
+    "question_id": "update_billing_q_mk",
+    "answer_id": "update_billing",
+    "language": "mk",
+    "question": "Како да ги ажурирам податоците за плаќање?"
   },
   {
-    "id": 11,
-    "question": "How do I contact customer support?",
-    "answer": "You can contact customer support via the Help Center or by emailing support@company.com."
+    "question_id": "double_charge_q_en",
+    "answer_id": "double_charge",
+    "language": "en",
+    "question": "Why was my credit card charged twice?"
   },
   {
-    "id": 12,
-    "question": "What are your customer support hours?",
-    "answer": "Our customer support team is available Monday to Friday, from 9 AM to 5 PM CET."
+    "question_id": "double_charge_q_mk",
+    "answer_id": "double_charge",
+    "language": "mk",
+    "question": "Зошто ми беше наплатено двапати со иста картичка?"
   },
   {
-    "id": 13,
-    "question": "How do I delete my account?",
-    "answer": "To delete your account, please submit a request through the Help Center. Account deletion is permanent."
+    "question_id": "cancel_subscription_q_en",
+    "answer_id": "cancel_subscription",
+    "language": "en",
+    "question": "How do I cancel my subscription?"
   },
   {
-    "id": 14,
-    "question": "Can I reactivate my account after deletion?",
-    "answer": "No, once an account is deleted it cannot be reactivated. You will need to create a new account."
+    "question_id": "cancel_subscription_q_mk",
+    "answer_id": "cancel_subscription",
+    "language": "mk",
+    "question": "Како да ја откажам претплатата?"
   },
   {
-    "id": 15,
-    "question": "Why is my account suspended?",
-    "answer": "Accounts may be suspended due to policy violations or payment issues. Please contact support for clarification."
+    "question_id": "refund_policy_q_en",
+    "answer_id": "refund_policy",
+    "language": "en",
+    "question": "Will I get a refund if I cancel my subscription?"
   },
   {
-    "id": 16,
-    "question": "How do I upgrade my subscription plan?",
-    "answer": "You can upgrade your plan from the Subscription section in your account settings."
+    "question_id": "refund_policy_q_mk",
+    "answer_id": "refund_policy",
+    "language": "mk",
+    "question": "Ќе добијам ли поврат ако ја откажам претплатата?"
   },
   {
-    "id": 17,
-    "question": "Is my personal data secure?",
-    "answer": "Yes, we use industry-standard security measures to protect your personal data."
+    "question_id": "download_invoices_q_en",
+    "answer_id": "download_invoices",
+    "language": "en",
+    "question": "How can I download my invoices?"
   },
   {
-    "id": 18,
-    "question": "Do you support multiple languages?",
-    "answer": "Yes, our platform supports multiple languages. You can change your preferred language in settings."
+    "question_id": "download_invoices_q_mk",
+    "answer_id": "download_invoices",
+    "language": "mk",
+    "question": "Како да ги симнам фактурите?"
   },
   {
-    "id": 19,
-    "question": "How do I report a bug?",
-    "answer": "You can report bugs through the Help Center by submitting a bug report form."
+    "question_id": "payment_methods_q_en",
+    "answer_id": "payment_methods",
+    "language": "en",
+    "question": "What payment methods do you accept?"
   },
   {
-    "id": 20,
-    "question": "Why is the application running slowly?",
-    "answer": "Performance issues may be caused by network problems or browser issues. Try refreshing the page or clearing your cache."
+    "question_id": "payment_methods_q_mk",
+    "answer_id": "payment_methods",
+    "language": "mk",
+    "question": "Кои начини на плаќање ги прифаќате?"
+  },
+  {
+    "question_id": "contact_support_q_en",
+    "answer_id": "contact_support",
+    "language": "en",
+    "question": "How do I contact customer support?"
+  },
+  {
+    "question_id": "contact_support_q_mk",
+    "answer_id": "contact_support",
+    "language": "mk",
+    "question": "Како да контактирам корисничка поддршка?"
+  },
+  {
+    "question_id": "support_hours_q_en",
+    "answer_id": "support_hours",
+    "language": "en",
+    "question": "What are your customer support hours?"
+  },
+  {
+    "question_id": "support_hours_q_mk",
+    "answer_id": "support_hours",
+    "language": "mk",
+    "question": "Кое е работното време на корисничката поддршка?"
+  },
+  {
+    "question_id": "delete_account_q_en",
+    "answer_id": "delete_account",
+    "language": "en",
+    "question": "How do I delete my account?"
+  },
+  {
+    "question_id": "delete_account_q_mk",
+    "answer_id": "delete_account",
+    "language": "mk",
+    "question": "Како да го избришам мојот профил?"
+  },
+  {
+    "question_id": "reactivate_account_q_en",
+    "answer_id": "reactivate_account",
+    "language": "en",
+    "question": "Can I reactivate my account after deletion?"
+  },
+  {
+    "question_id": "reactivate_account_q_mk",
+    "answer_id": "reactivate_account",
+    "language": "mk",
+    "question": "Може ли повторно да го активирам профилот по бришење?"
+  },
+  {
+    "question_id": "account_suspended_q_en",
+    "answer_id": "account_suspended",
+    "language": "en",
+    "question": "Why is my account suspended?"
+  },
+  {
+    "question_id": "account_suspended_q_mk",
+    "answer_id": "account_suspended",
+    "language": "mk",
+    "question": "Зошто мојот профил е суспендиран?"
+  },
+  {
+    "question_id": "upgrade_subscription_q_en",
+    "answer_id": "upgrade_subscription",
+    "language": "en",
+    "question": "How do I upgrade my subscription plan?"
+  },
+  {
+    "question_id": "upgrade_subscription_q_mk",
+    "answer_id": "upgrade_subscription",
+    "language": "mk",
+    "question": "Како да ја надградам претплатата?"
+  },
+  {
+    "question_id": "data_security_q_en",
+    "answer_id": "data_security",
+    "language": "en",
+    "question": "Is my personal data secure?"
+  },
+  {
+    "question_id": "data_security_q_mk",
+    "answer_id": "data_security",
+    "language": "mk",
+    "question": "Дали моите лични податоци се безбедни?"
+  },
+  {
+    "question_id": "language_support_q_en",
+    "answer_id": "language_support",
+    "language": "en",
+    "question": "Do you support multiple languages?"
+  },
+  {
+    "question_id": "language_support_q_mk",
+    "answer_id": "language_support",
+    "language": "mk",
+    "question": "Дали поддржувате повеќе јазици?"
+  },
+  {
+    "question_id": "report_bug_q_en",
+    "answer_id": "report_bug",
+    "language": "en",
+    "question": "How do I report a bug?"
+  },
+  {
+    "question_id": "report_bug_q_mk",
+    "answer_id": "report_bug",
+    "language": "mk",
+    "question": "Како да пријавам баг?"
+  },
+  {
+    "question_id": "performance_issues_q_en",
+    "answer_id": "performance_issues",
+    "language": "en",
+    "question": "Why is the application running slowly?"
+  },
+  {
+    "question_id": "performance_issues_q_mk",
+    "answer_id": "performance_issues",
+    "language": "mk",
+    "question": "Зошто апликацијата ми работи бавно?"
   }
 ]

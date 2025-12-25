@@ -1,0 +1,82 @@
+[
+  {
+    "answer_id": "reset_password",
+    "answer_text": "You can reset your password by clicking the Forgot password link on the login page and following the instructions sent to your email."
+  },
+  {
+    "answer_id": "forgot_password_login",
+    "answer_text": "If you forgot your password, use the Forgot password option on the login page to receive a reset link via email."
+  },
+  {
+    "answer_id": "password_reset_email_missing",
+    "answer_text": "Please check your spam folder and ensure your email address is correct. If the issue persists, contact customer support."
+  },
+  {
+    "answer_id": "change_email",
+    "answer_text": "You can change your email address in your account settings under the Profile section."
+  },
+  {
+    "answer_id": "update_billing",
+    "answer_text": "To update billing details, go to Account Settings and select the Billing tab to edit your payment information."
+  },
+  {
+    "answer_id": "double_charge",
+    "answer_text": "Double charges usually occur due to authorization holds. If the issue remains after 24 hours, please contact support."
+  },
+  {
+    "answer_id": "cancel_subscription",
+    "answer_text": "You can cancel your subscription anytime from the Subscription section in your account settings."
+  },
+  {
+    "answer_id": "refund_policy",
+    "answer_text": "Refunds depend on your subscription plan. Please review our refund policy or contact support for details."
+  },
+  {
+    "answer_id": "download_invoices",
+    "answer_text": "Invoices are available in PDF format under the Billing section of your account."
+  },
+  {
+    "answer_id": "payment_methods",
+    "answer_text": "We accept major credit cards including Visa, MasterCard, and American Express."
+  },
+  {
+    "answer_id": "contact_support",
+    "answer_text": "You can contact customer support via the Help Center or by emailing support@company.com."
+  },
+  {
+    "answer_id": "support_hours",
+    "answer_text": "Our customer support team is available Monday to Friday, from 9 AM to 5 PM CET."
+  },
+  {
+    "answer_id": "delete_account",
+    "answer_text": "To delete your account, please submit a request through the Help Center. Account deletion is permanent."
+  },
+  {
+    "answer_id": "reactivate_account",
+    "answer_text": "No, once an account is deleted it cannot be reactivated. You will need to create a new account."
+  },
+  {
+    "answer_id": "account_suspended",
+    "answer_text": "Accounts may be suspended due to policy violations or payment issues. Please contact support for clarification."
+  },
+  {
+    "answer_id": "upgrade_subscription",
+    "answer_text": "You can upgrade your plan from the Subscription section in your account settings."
+  },
+  {
+    "answer_id": "data_security",
+    "answer_text": "Yes, we use industry-standard security measures to protect your personal data."
+  },
+  {
+    "answer_id": "language_support",
+    "answer_text": "Yes, our platform supports multiple languages. You can change your preferred language in settings."
+  },
+  {
+    "answer_id": "report_bug",
+    "answer_text": "You can report bugs through the Help Center by submitting a bug report form."
+  },
+  {
+    "answer_id": "performance_issues",
+    "answer_text": "Performance issues may be caused by network problems or browser issues. Try refreshing the page or clearing your cache."
+  }
+]
