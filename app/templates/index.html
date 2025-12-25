@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ Retrieval Assistant</title>
+</head>
+<body>
+
+<h1>FAQ Retrieval Assistant</h1>
+
+<form method="POST">
+    <label>
+        <input
+                type="text"
+                name="query"
+                placeholder="Ask a question..."
+                value="{{ query }}"
+                required
+        >
+    </label>
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+<h2>Top Results</h2>
+<ul>
+    {% for r in results %}
+    <li>
+        <strong>Q:</strong> {{ r.question }}<br>
+        <strong>A:</strong> {{ r.answer }}<br>
+        <strong>Similarity: {{ "%.3f"|format(r.similarity) }}</strong>
+    </li>
+    <br>
+    {% endfor %}
+</ul>
+{% endif %}
+
+</body>
+</html>
