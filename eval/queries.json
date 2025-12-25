@@ -1,193 +1,193 @@
 [
   {
     "query": "I can't log into my account, how do I reset my password?",
-    "expected_faq_id": 1,
+    "expected_faq_id": "reset_password_q_en",
     "language": "en",
     "notes": "Paraphrase of password reset, common user phrasing"
   },
   {
     "query": "Forgot my password and now I'm locked out",
-    "expected_faq_id": 2,
+    "expected_faq_id": "forgot_password_login_q_en",
     "language": "en",
     "notes": "Short, emotional phrasing"
   },
   {
     "query": "The password reset email never arrives",
-    "expected_faq_id": 3,
+    "expected_faq_id": "password_reset_email_missing_q_en",
     "language": "en",
     "notes": "Email delivery issue"
   },
   {
     "query": "How can I update the email linked to my account?",
-    "expected_faq_id": 4,
+    "expected_faq_id": "change_email_q_en",
     "language": "en",
     "notes": "Account profile management"
   },
   {
     "query": "Where can I change my credit card details?",
-    "expected_faq_id": 5,
+    "expected_faq_id": "update_billing_q_en",
     "language": "en",
     "notes": "Billing info update"
   },
   {
     "query": "My card was charged twice this month",
-    "expected_faq_id": 6,
+    "expected_faq_id": "double_charge_q_en",
     "language": "en",
     "notes": "Ambiguous billing issue (could hint at refunds)"
   },
   {
     "query": "I want to stop my subscription",
-    "expected_faq_id": 7,
+    "expected_faq_id": "cancel_subscription_q_en",
     "language": "en",
     "notes": "Messy, short phrasing"
   },
   {
     "query": "If I cancel my plan, will I get my money back?",
-    "expected_faq_id": 8,
+    "expected_faq_id": "refund_policy_q_en",
     "language": "en",
     "notes": "Refund vs cancellation ambiguity"
   },
   {
     "query": "How do I download previous invoices?",
-    "expected_faq_id": 9,
+    "expected_faq_id": "download_invoices_q_en",
     "language": "en",
     "notes": "Billing documents"
   },
   {
     "query": "Which credit cards can I use to pay?",
-    "expected_faq_id": 10,
+    "expected_faq_id": "payment_methods_q_en",
     "language": "en",
     "notes": "Payment methods"
   },
   {
     "query": "How can I reach support?",
-    "expected_faq_id": 11,
+    "expected_faq_id": "contact_support_q_en",
     "language": "en",
     "notes": "Very short query"
   },
   {
     "query": "When is customer support available?",
-    "expected_faq_id": 12,
+    "expected_faq_id": "support_hours_q_en",
     "language": "en",
     "notes": "Support hours"
   },
   {
     "query": "I want to permanently delete my account",
-    "expected_faq_id": 13,
+    "expected_faq_id": "delete_account_q_en",
     "language": "en",
     "notes": "Account deletion intent"
   },
   {
     "query": "Can I recover my account after deleting it?",
-    "expected_faq_id": 14,
+    "expected_faq_id": "reactivate_account_q_en",
     "language": "en",
     "notes": "Follow-up deletion question"
   },
   {
     "query": "My account was disabled and I don't know why",
-    "expected_faq_id": 15,
+    "expected_faq_id": "account_suspended_q_en",
     "language": "en",
     "notes": "Suspension without explicit keyword"
   },
   {
     "query": "How do I move to a higher subscription plan?",
-    "expected_faq_id": 16,
+    "expected_faq_id": "upgrade_subscription_q_en",
     "language": "en",
     "notes": "Upgrade phrasing"
   },
   {
     "query": "Is my personal information safe on your platform?",
-    "expected_faq_id": 17,
+    "expected_faq_id": "data_security_q_en",
     "language": "en",
     "notes": "Security concern"
   },
   {
     "query": "Does the app support more than one language?",
-    "expected_faq_id": 18,
+    "expected_faq_id": "language_support_q_en",
     "language": "en",
     "notes": "Feature capability"
   },
   {
     "query": "I found a bug in the app, how can I report it?",
-    "expected_faq_id": 19,
+    "expected_faq_id": "report_bug_q_en",
     "language": "en",
     "notes": "Direct but paraphrased bug reporting intent"
   },
   {
     "query": "Why does the application take so long to load?",
-    "expected_faq_id": 20,
+    "expected_faq_id": "performance_issues_q_en",
     "language": "en",
     "notes": "Different wording for performance problems"
   },
   {
     "query": "Не можам да се најавам, ја заборавив лозинката",
-    "expected_faq_id": 1,
+    "expected_faq_id": "reset_password_q_en",
     "language": "mk",
     "notes": "Natural MK phrasing for password reset"
   },
   {
     "query": "Не ми стигнува мејл за ресетирање на лозинка",
-    "expected_faq_id": 3,
+    "expected_faq_id": "reset_password_q_en",
     "language": "mk",
     "notes": "MK email delivery issue"
   },
   {
     "query": "Како да ја сменам емаил адресата на профилот?",
-    "expected_faq_id": 4,
+    "expected_faq_id": "change_email_q_en",
     "language": "mk",
     "notes": "Account settings in MK"
   },
   {
     "query": "Каде можам да ги ажурирам податоците за плаќање?",
-    "expected_faq_id": 5,
+    "expected_faq_id": "update_billing_q_en",
     "language": "mk",
     "notes": "Billing info update"
   },
   {
     "query": "Ми беше наплатено двапати со иста картичка",
-    "expected_faq_id": 6,
+    "expected_faq_id": "double_charge_q_en",
     "language": "mk",
     "notes": "Ambiguous billing issue"
   },
   {
     "query": "Сакам да ја откажам претплатата",
-    "expected_faq_id": 7,
+    "expected_faq_id": "cancel_subscription_q_en",
     "language": "mk",
     "notes": "Very short MK query"
   },
   {
     "query": "Ќе добијам ли поврат ако ја откажам претплатата?",
-    "expected_faq_id": 8,
+    "expected_faq_id": "refund_policy_q_en",
     "language": "mk",
     "notes": "Refund ambiguity"
   },
   {
     "query": "Како да ги симнам фактурите?",
-    "expected_faq_id": 9,
+    "expected_faq_id": "download_invoices_q_en",
     "language": "mk",
     "notes": "Invoices, very short"
   },
   {
     "query": "Како да стапам во контакт со поддршка?",
-    "expected_faq_id": 11,
+    "expected_faq_id": "contact_support_q_en",
     "language": "mk",
     "notes": "Support contact"
   },
   {
     "query": "Во кое време работи корисничката поддршка?",
-    "expected_faq_id": 12,
+    "expected_faq_id": "support_hours_q_en",
     "language": "mk",
     "notes": "Support hours"
   },
   {
     "query": "Сакам трајно да го избришам мојот профил",
-    "expected_faq_id": 13,
+    "expected_faq_id": "delete_account_q_en",
     "language": "mk",
     "notes": "Account deletion"
   },
   {
     "query": "Апликацијата ми работи многу бавно",
-    "expected_faq_id": 20,
+    "expected_faq_id": "performance_issues_q_en",
     "language": "mk",
     "notes": "Performance issue"
   }

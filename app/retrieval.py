@@ -10,7 +10,7 @@ FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
 ANSWERS_PATH = os.path.join(DATA_DIR, "answers.json")
 EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
 
-CONFIDENCE_THRESHOLD = 0.55
+CONFIDENCE_THRESHOLD = 0.7
 
 with open(FAQS_PATH, "r", encoding="utf-8") as f:
     QUESTIONS = json.load(f)
@@ -28,7 +28,7 @@ def build_answer_to_en_question_map(questions):
     mapping = {}
     for q in questions:
         if q["language"] == "en":
-            mapping[q["answer_id"]] = q["question"]
+            mapping[q["answer_id"]] = q
     return mapping
 
 
@@ -77,9 +77,11 @@ def collect_unique_answers(sorted_indices, similarities, top_k: int):
         seen_answers.add(answer_id)
         collected_similarities.append(similarities[idx])
 
+        selected_question = ANSWER_TO_EN_QUESTION[answer_id]
+
         results.append({
-            "id": answer_id,
-            "question": ANSWER_TO_EN_QUESTION[answer_id],
+            "id": selected_question["question_id"],
+            "question": selected_question["question"],
             "answer": ANSWERS[answer_id],
             "similarity": float(similarities[idx]),
         })

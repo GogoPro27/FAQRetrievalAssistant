@@ -1,0 +1,33 @@
+query,language,expected_faq_id,retrieved_ids,rank_of_expected,top1_correct,top3_correct,confidence
+"I can't log into my account, how do I reset my password?",en,reset_password_q_en,"['reset_password_q_en', 'forgot_password_login_q_en', 'delete_account_q_en']",1,True,True,0.681
+Forgot my password and now I'm locked out,en,forgot_password_login_q_en,"['forgot_password_login_q_en', 'reset_password_q_en', 'password_reset_email_missing_q_en']",1,True,True,0.648
+The password reset email never arrives,en,password_reset_email_missing_q_en,"['password_reset_email_missing_q_en', 'reset_password_q_en', 'forgot_password_login_q_en']",1,True,True,0.59
+How can I update the email linked to my account?,en,change_email_q_en,"['change_email_q_en', 'update_billing_q_en', 'upgrade_subscription_q_en']",1,True,True,0.485
+Where can I change my credit card details?,en,update_billing_q_en,"['change_email_q_en', 'update_billing_q_en', 'upgrade_subscription_q_en']",2,False,True,0.151
+My card was charged twice this month,en,double_charge_q_en,"['double_charge_q_en', 'update_billing_q_en', 'account_suspended_q_en']",1,True,True,0.752
+I want to stop my subscription,en,cancel_subscription_q_en,"['cancel_subscription_q_en', 'upgrade_subscription_q_en', 'delete_account_q_en']",1,True,True,0.708
+"If I cancel my plan, will I get my money back?",en,refund_policy_q_en,"['refund_policy_q_en', 'cancel_subscription_q_en', 'upgrade_subscription_q_en']",1,True,True,0.659
+How do I download previous invoices?,en,download_invoices_q_en,"['download_invoices_q_en', 'update_billing_q_en', 'upgrade_subscription_q_en']",1,True,True,0.807
+Which credit cards can I use to pay?,en,payment_methods_q_en,"['payment_methods_q_en', 'update_billing_q_en', 'double_charge_q_en']",1,True,True,0.413
+How can I reach support?,en,contact_support_q_en,"['contact_support_q_en', 'support_hours_q_en', 'change_email_q_en']",1,True,True,0.648
+When is customer support available?,en,support_hours_q_en,"['support_hours_q_en', 'contact_support_q_en', 'update_billing_q_en']",1,True,True,0.703
+I want to permanently delete my account,en,delete_account_q_en,"['delete_account_q_en', 'reactivate_account_q_en', 'cancel_subscription_q_en']",1,True,True,0.632
+Can I recover my account after deleting it?,en,reactivate_account_q_en,"['reactivate_account_q_en', 'delete_account_q_en', 'account_suspended_q_en']",1,True,True,0.693
+My account was disabled and I don't know why,en,account_suspended_q_en,"['account_suspended_q_en', 'reactivate_account_q_en', 'forgot_password_login_q_en']",1,True,True,0.546
+How do I move to a higher subscription plan?,en,upgrade_subscription_q_en,"['upgrade_subscription_q_en', 'cancel_subscription_q_en', 'update_billing_q_en']",1,True,True,0.767
+Is my personal information safe on your platform?,en,data_security_q_en,"['data_security_q_en', 'account_suspended_q_en', 'payment_methods_q_en']",1,True,True,0.676
+Does the app support more than one language?,en,language_support_q_en,"['language_support_q_en', 'performance_issues_q_en', 'payment_methods_q_en']",1,True,True,0.679
+"I found a bug in the app, how can I report it?",en,report_bug_q_en,"['report_bug_q_en', 'contact_support_q_en', 'update_billing_q_en']",1,True,True,0.683
+Why does the application take so long to load?,en,performance_issues_q_en,"['performance_issues_q_en', 'support_hours_q_en', 'account_suspended_q_en']",1,True,True,0.714
+"Не можам да се најавам, ја заборавив лозинката",mk,reset_password_q_en,"['forgot_password_login_q_en', 'password_reset_email_missing_q_en', 'reset_password_q_en']",3,False,True,0.81
+Не ми стигнува мејл за ресетирање на лозинка,mk,reset_password_q_en,"['password_reset_email_missing_q_en', 'reset_password_q_en', 'forgot_password_login_q_en']",2,False,True,0.79
+Како да ја сменам емаил адресата на профилот?,mk,change_email_q_en,"['change_email_q_en', 'delete_account_q_en', 'reactivate_account_q_en']",1,True,True,0.87
+Каде можам да ги ажурирам податоците за плаќање?,mk,update_billing_q_en,"['update_billing_q_en', 'payment_methods_q_en', 'upgrade_subscription_q_en']",1,True,True,0.809
+Ми беше наплатено двапати со иста картичка,mk,double_charge_q_en,"['double_charge_q_en', 'upgrade_subscription_q_en', 'cancel_subscription_q_en']",1,True,True,0.808
+Сакам да ја откажам претплатата,mk,cancel_subscription_q_en,"['cancel_subscription_q_en', 'refund_policy_q_en', 'upgrade_subscription_q_en']",1,True,True,0.474
+Ќе добијам ли поврат ако ја откажам претплатата?,mk,refund_policy_q_en,"['refund_policy_q_en', 'cancel_subscription_q_en', 'upgrade_subscription_q_en']",1,True,True,1.0
+Како да ги симнам фактурите?,mk,download_invoices_q_en,"['download_invoices_q_en', 'report_bug_q_en', 'update_billing_q_en']",1,True,True,1.0
+Како да стапам во контакт со поддршка?,mk,contact_support_q_en,"['contact_support_q_en', 'support_hours_q_en', 'report_bug_q_en']",1,True,True,0.633
+Во кое време работи корисничката поддршка?,mk,support_hours_q_en,"['support_hours_q_en', 'contact_support_q_en', 'performance_issues_q_en']",1,True,True,0.862
+Сакам трајно да го избришам мојот профил,mk,delete_account_q_en,"['delete_account_q_en', 'account_suspended_q_en', 'reactivate_account_q_en']",1,True,True,0.54
+Апликацијата ми работи многу бавно,mk,performance_issues_q_en,"['performance_issues_q_en', 'support_hours_q_en', 'report_bug_q_en']",1,True,True,0.71
