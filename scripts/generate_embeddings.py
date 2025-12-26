@@ -1,24 +1,46 @@
 import json
 import numpy as np
-import os
+from pathlib import Path
 from app.embeddings import create_embedding
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DATA_DIR = os.path.join(BASE_DIR, "data")
 
-FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
-EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
+def get_data_dir() -> Path:
+    base_dir = Path(__file__).parent.parent
+    return base_dir / "data"
 
-def main():
+
+DATA_DIR = get_data_dir()
+FAQS_PATH = DATA_DIR / "faqs.json"
+EMBEDDINGS_PATH = DATA_DIR / "embeddings.npy"
+
+
+def load_faqs() -> list:
     with open(FAQS_PATH, "r", encoding="utf-8") as f:
-        faqs = json.load(f)
+        return json.load(f)
+
+
+def validate_faq(faq, index) -> None:
+    if not faq["question"].strip():
+        raise ValueError(f"Invalid FAQ entry at index {index}")
+
+
+def validate_embeddings(embeddings, faqs) -> None:
+    if embeddings.shape[0] != len(faqs):
+        raise RuntimeError("Embedding generation incomplete")
+
+
+def main() -> None:
+    faqs = load_faqs()
 
     embeddings = []
     for i, faq in enumerate(faqs, 1):
+        validate_faq(faq, i)
         embeddings.append(create_embedding(faq["question"]))
-        print(f"   Processed {i}/{len(faqs)} FAQs")
+        print(f"Processed {i}/{len(faqs)} FAQs")
 
-    np.save(EMBEDDINGS_PATH, np.vstack(embeddings))
+    validate_embeddings(np.vstack(embeddings), faqs)
+
+    np.save(EMBEDDINGS_PATH, embeddings)
     print(f"Saved in: {EMBEDDINGS_PATH}")
 
 

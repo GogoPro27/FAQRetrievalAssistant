@@ -21,10 +21,16 @@
     <button type="submit">Search</button>
 </form>
 
+{% if error_message %}
+  <p style="color: red;">
+    <strong>Error:</strong> {{ error_message }}
+  </p>
+{% endif %}
+
 {% if results %}
 <h2>Top Results</h2>
 {% if below_threshold %}
-<p><em>I’m not fully confident, but these might help:</em></p>
+<p><em>I'm not fully confident, but these might help:</em></p>
 {% else %}
 <p><strong>Confidence:</strong> {{ confidence }}</p>
 {% endif %}
@@ -39,6 +45,10 @@
     <br>
     {% endfor %}
 </ul>
+{% endif %}
+
+{% if not results and query %}
+<p><em>No relevant results found.</em></p>
 {% endif %}
 
 </body>

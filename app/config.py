@@ -1,0 +1,3 @@
+EMBEDDING_MODEL = "text-embedding-3-small"
+TOP_K = 3
+CONFIDENCE_THRESHOLD = 0.65

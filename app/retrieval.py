@@ -1,34 +1,47 @@
 import json
-import os
 import numpy as np
+from pathlib import Path
 from app.embeddings import create_embedding
-
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DATA_DIR = os.path.join(BASE_DIR, "data")
-
-FAQS_PATH = os.path.join(DATA_DIR, "faqs.json")
-ANSWERS_PATH = os.path.join(DATA_DIR, "answers.json")
-EMBEDDINGS_PATH = os.path.join(DATA_DIR, "embeddings.npy")
-
-CONFIDENCE_THRESHOLD = 0.7
-
-with open(FAQS_PATH, "r", encoding="utf-8") as f:
-    QUESTIONS = json.load(f)
-
-with open(ANSWERS_PATH, "r", encoding="utf-8") as f:
-    ANSWERS = {a["answer_id"]: a["answer_text"] for a in json.load(f)}
-
-FAQ_EMBEDDINGS = np.load(EMBEDDINGS_PATH)
-FAQ_EMBEDDINGS = FAQ_EMBEDDINGS / np.linalg.norm(
-    FAQ_EMBEDDINGS, axis=1, keepdims=True
-)
+from app.config import CONFIDENCE_THRESHOLD, TOP_K
 
 
-def build_answer_to_en_question_map(questions):
+def get_data_dir() -> Path:
+    base_dir = Path(__file__).parent.parent
+    return base_dir / "data"
+
+
+def load_questions(data_dir: Path) -> list:
+    with open(data_dir / "faqs.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_answers(data_dir: Path) -> dict:
+    with open(data_dir / "answers.json", "r", encoding="utf-8") as f:
+        answers_list = json.load(f)
+        return {a["answer_id"]: a["answer_text"] for a in answers_list}
+
+
+def load_embeddings(data_dir: Path) -> np.ndarray:
+    embeddings = np.load(data_dir / "embeddings.npy")
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    return embeddings / norms
+
+
+DATA_DIR = get_data_dir()
+QUESTIONS = load_questions(DATA_DIR)
+ANSWERS = load_answers(DATA_DIR)
+FAQ_EMBEDDINGS = load_embeddings(DATA_DIR)
+
+
+def build_answer_to_en_question_map(questions) -> dict:
     mapping = {}
     for q in questions:
-        if q["language"] == "en":
+        if q.get("language") == "en":
             mapping[q["answer_id"]] = q
+
+    if not mapping:
+        raise ValueError("No English questions found in FAQ data")
+
     return mapping
 
 
@@ -54,15 +67,22 @@ def compute_confidence(similarities: np.ndarray) -> float:
     return round(confidence, 3)
 
 
-def rank_questions(query: str):
+def rank_questions(query: str) -> tuple[np.ndarray, np.ndarray]:
+    if not query.strip():
+        raise ValueError("Query must not be empty")
+
     query_embedding = create_embedding(query)
+
+    if query_embedding.shape[0] != FAQ_EMBEDDINGS.shape[1]:
+        raise ValueError("Embedding dimension mismatch")
+
     similarities = cosine_similarity(query_embedding)
     sorted_indices = np.argsort(similarities)[::-1]
 
     return sorted_indices, similarities
 
 
-def collect_unique_answers(sorted_indices, similarities, top_k: int):
+def collect_unique_answers(sorted_indices, similarities, top_k: int) -> tuple[list, np.ndarray]:
     results = []
     seen_answers = set()
     collected_similarities = []
@@ -78,6 +98,8 @@ def collect_unique_answers(sorted_indices, similarities, top_k: int):
         collected_similarities.append(similarities[idx])
 
         selected_question = ANSWER_TO_EN_QUESTION[answer_id]
+        if not selected_question:
+            continue
 
         results.append({
             "id": selected_question["question_id"],
@@ -92,7 +114,7 @@ def collect_unique_answers(sorted_indices, similarities, top_k: int):
     return results, np.array(collected_similarities)
 
 
-def search(query: str, top_k: int = 3):
+def search(query: str, top_k: int = TOP_K) -> dict:
     sorted_indices, similarities = rank_questions(query)
 
     results, collected_similarities = collect_unique_answers(
@@ -100,6 +122,13 @@ def search(query: str, top_k: int = 3):
         similarities,
         top_k
     )
+
+    if not results:
+        return {
+            "results": [],
+            "confidence": 0.0,
+            "below_threshold": True
+        }
 
     confidence = compute_confidence(collected_similarities)
     below_threshold = confidence < CONFIDENCE_THRESHOLD
