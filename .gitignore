@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 .idea/
 .env
+!.env.example
 .DS_Store
 
 data/embeddings.npy
-
