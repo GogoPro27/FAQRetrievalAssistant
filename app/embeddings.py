@@ -12,11 +12,13 @@ client = OpenAI(api_key=API_KEY)
 
 
 def validate_text(text: str) -> None:
+    """Validate that text is not empty or whitespace-only."""
     if not text or not text.strip():
         raise ValueError("Cannot create embedding for empty text")
 
 
 def call_embedding_api(text: str) -> CreateEmbeddingResponse:
+    """Call OpenAI embeddings API and handle errors."""
     try:
         response = client.embeddings.create(
             model=EMBEDDING_MODEL,
@@ -28,6 +30,7 @@ def call_embedding_api(text: str) -> CreateEmbeddingResponse:
 
 
 def create_embedding(text: str, normalize: bool = True) -> np.ndarray:
+    """Generate and optionally normalize embedding vector for text."""
     validate_text(text)
 
     response = call_embedding_api(text)

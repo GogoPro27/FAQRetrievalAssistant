@@ -6,22 +6,26 @@ from app.config import CONFIDENCE_THRESHOLD, TOP_K
 
 
 def get_data_dir() -> Path:
+    """Return the data directory path."""
     base_dir = Path(__file__).parent.parent
     return base_dir / "data"
 
 
 def load_questions(data_dir: Path) -> list:
+    """Load FAQ questions from JSON file."""
     with open(data_dir / "faqs.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def load_answers(data_dir: Path) -> dict:
+    """Load answers as a dict mapping answer_id to answer_text."""
     with open(data_dir / "answers.json", "r", encoding="utf-8") as f:
         answers_list = json.load(f)
         return {a["answer_id"]: a["answer_text"] for a in answers_list}
 
 
 def load_embeddings(data_dir: Path) -> np.ndarray:
+    """Load and normalize FAQ embeddings."""
     embeddings = np.load(data_dir / "embeddings.npy")
     norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
     return embeddings / norms
@@ -34,6 +38,7 @@ FAQ_EMBEDDINGS = load_embeddings(DATA_DIR)
 
 
 def build_answer_to_en_question_map(questions) -> dict:
+    """Map answer IDs to their English question entries."""
     mapping = {}
     for q in questions:
         if q.get("language") == "en":
@@ -49,10 +54,12 @@ ANSWER_TO_EN_QUESTION = build_answer_to_en_question_map(QUESTIONS)
 
 
 def cosine_similarity(query_embedding: np.ndarray) -> np.ndarray:
+    """Compute cosine similarity between query and all FAQ embeddings."""
     return FAQ_EMBEDDINGS @ query_embedding
 
 
 def compute_confidence(similarities: np.ndarray) -> float:
+    """Calculate confidence score based on top similarities and margin."""
     if len(similarities) < 2:
         return 0.0
 
@@ -68,6 +75,10 @@ def compute_confidence(similarities: np.ndarray) -> float:
 
 
 def rank_questions(query: str) -> tuple[np.ndarray, np.ndarray]:
+    """Rank FAQ questions by similarity to query.
+
+    Returns: (sorted_indices, similarities)
+    """
     if not query.strip():
         raise ValueError("Query must not be empty")
 
@@ -83,6 +94,10 @@ def rank_questions(query: str) -> tuple[np.ndarray, np.ndarray]:
 
 
 def collect_unique_answers(sorted_indices, similarities, top_k: int) -> tuple[list, np.ndarray]:
+    """Collect top-k unique answers with their English questions.
+
+    Returns: (results, collected_similarities)
+    """
     results = []
     seen_answers = set()
     collected_similarities = []
@@ -115,6 +130,7 @@ def collect_unique_answers(sorted_indices, similarities, top_k: int) -> tuple[li
 
 
 def search(query: str, top_k: int = TOP_K) -> dict:
+    """Search FAQs and return results with confidence metrics."""
     sorted_indices, similarities = rank_questions(query)
 
     results, collected_similarities = collect_unique_answers(

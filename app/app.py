@@ -7,6 +7,10 @@ app = Flask(__name__)
 
 
 def process_search_query(query_text) -> tuple[list, float, bool, str | None]:
+    """Process a search query and return results with confidence metrics.
+
+    Returns: (results, confidence, below_threshold, error_message)
+    """
     if not query_text:
         return [], 0.0, False, "Query cannot be empty"
 
@@ -25,6 +29,7 @@ def process_search_query(query_text) -> tuple[list, float, bool, str | None]:
 
 @app.route("/", methods=["GET", "POST"])
 def index() -> str:
+    """Handle main page rendering and search requests."""
     query = ""
     results = []
     confidence = 0.0
