@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def process_search_query(query_text):
     if not query_text:
-        return [], 0.0
+        return [], 0.0, False
 
     response = search(query_text)
     return response["results"], response["confidence"], response["below_threshold"]
