@@ -84,6 +84,28 @@ This approach avoids runtime translation, additional indexes, and unnecessary la
 
 ---
 
+## Results Summary
+
+| Metric | Baseline | Enhanced | Δ Improvement |
+|--------|----------|----------|---------------|
+| **Top-1 Accuracy** | 84.4% | 90.6% | +6.2% |
+| **Top-3 Accuracy** | 93.8% | 100% | +6.2% |
+| **MK Top-1 Accuracy** | 66.7% | 83.3% | +16.7% |
+| **MK Top-3 Accuracy** | 83.3% | 100% | +16.7% |
+| **Avg Confidence (Correct)** | 0.535 | 0.696 | +30% |
+| **MK Failures (Top-3)** | 2 | 0 | -100% |
+
+### Key Findings
+
+**Perfect Top-3 coverage** achieved in the enhanced version (100%)  
+**Macedonian query performance** improved dramatically (+16.7% top-1)  
+**Confidence scores** are higher and more reliable for correct retrievals  
+**All Macedonian failures eliminated** in top-3 retrieval
+
+The enhanced multilingual FAQ augmentation successfully addresses the language gap without adding runtime complexity.
+
+---
+
 ### 5. Re-evaluation and threshold re-tuning
 
 After adding Macedonian question variants:
